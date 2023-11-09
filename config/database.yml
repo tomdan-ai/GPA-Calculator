@@ -6,16 +6,22 @@ default: &default
 development:
   <<: *default
   database: gpa_calc
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
+  username: postgres
+  password: admin
   host: localhost
 
 test:
   <<: *default
   database: gpa_calc_test
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
+  username: postgres
+  password: admin
 
 production:
   <<: *default
-  database:  <%= ENV['DATABASE_URL'] %>
+  database: gpa_calc_production
+  username: postgres
+  password: admin
+  host: localhost
+  port: 5432
+
+
