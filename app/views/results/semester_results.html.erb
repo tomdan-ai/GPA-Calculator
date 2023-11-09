@@ -1,0 +1,10 @@
+<h1>Semester GPA Results</h1>
+
+<% @courses.each do |course| %>
+  <p><strong>Course Name:</strong> <%= course.name %></p>
+  <p><strong>Grade:</strong> <%= course.grade %></p>
+  <p><strong>Credit Unit:</strong> <%= course.credit_unit %></p>
+  <hr>
+<% end %>
+
+<p><strong>Semester GPA:</strong> <%= @gpa %></p>
