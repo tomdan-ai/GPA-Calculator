@@ -11,5 +11,14 @@ class Course < ApplicationRecord
     def calculate_quality_points
       GRADE_POINTS[grade] * credit_unit
     end
+  
+    def self.calculate_semester_gpa(courses)
+      total_quality_points = courses.sum(&:calculate_quality_points)
+      total_credit_units = courses.sum(&:credit_unit)
+  
+      return 0.0 if total_credit_units.zero?
+  
+      (total_quality_points / total_credit_units).round(2)
+    end
   end
   
