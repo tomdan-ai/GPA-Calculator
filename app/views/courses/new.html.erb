@@ -1,0 +1,20 @@
+<h1>Enter Course Details</h1>
+
+<%= form_with(model: @course, url: courses_path, method: :post) do |form| %>
+  <%= form.label :name, 'Course Name' %>
+  <%= form.text_field :name %>
+
+  <%= form.label :code, 'Course Code' %>
+  <%= form.text_field :code %>
+
+  <%= form.label :score, 'Score' %>
+  <%= form.number_field :score %>
+
+  <%= form.label :grade, 'Grade' %>
+  <%= form.text_field :grade %>
+
+  <%= form.label :credit_unit, 'Credit Unit' %>
+  <%= form.number_field :credit_unit %>
+
+  <%= form.submit 'Add Course' %>
+<% end %>
