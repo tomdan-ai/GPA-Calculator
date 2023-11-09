@@ -66,5 +66,5 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
-
+# Use Environment Variables to conceal database Information
 gem "dotenv"
