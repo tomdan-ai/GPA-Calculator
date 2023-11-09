@@ -1,0 +1,10 @@
+<h1>Overall CGPA Results</h1>
+
+<% @all_courses.each do |course| %>
+  <p><strong>Course Name:</strong> <%= course.name %></p>
+  <p><strong>Grade:</strong> <%= course.grade %></p>
+  <p><strong>Credit Unit:</strong> <%= course.credit_unit %></p>
+  <hr>
+<% end %>
+
+<p><strong>Overall CGPA:</strong> <%= @cgpa %></p>
