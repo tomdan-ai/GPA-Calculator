@@ -1,0 +1,13 @@
+<h1>Add Grades for Semester <%= @semester.name %></h1>
+
+<%= form_with(model: @grades, url: semester_grades_path(@semester), method: :post) do |form| %>
+  <% @grades.each do |grade| %>
+    <div>
+      <%= form.hidden_field "grades_attributes[][course_id]", value: grade.course.id %>
+      <%= form.label "grades_attributes[][value]", "Grade for #{grade.course.name}" %>
+      <%= form.text_field "grades_attributes[][value]" %>
+    </div>
+  <% end %>
+
+  <%= form.submit 'Add Grades' %>
+<% end %>

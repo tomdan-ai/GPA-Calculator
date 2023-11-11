@@ -4,13 +4,14 @@ class CoursesController < ApplicationController
     end
   
     def create
-      @course = Course.new(course_params)
-      if @course.save
-        redirect_to root_path, notice: 'Course added successfully.'
-      else
-        render :new
+        @course = Course.new(course_params)
+      
+        if @course.save
+          redirect_to root_path, notice: 'Course added successfully.'
+        else
+          render :new
+        end
       end
-    end
   
     private
   

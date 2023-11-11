@@ -1,6 +1,8 @@
+<!-- app/views/results/semester_results.html.erb -->
+
 <h1>Semester GPA Results</h1>
 
-<% @courses.each do |course| %>
+<% @semester.courses.each do |course| %>
   <p><strong>Course Name:</strong> <%= course.name %></p>
   <p><strong>Grade:</strong> <%= course.grade %></p>
   <p><strong>Credit Unit:</strong> <%= course.credit_unit %></p>
@@ -8,3 +10,7 @@
 <% end %>
 
 <p><strong>Semester GPA:</strong> <%= @gpa %></p>
+
+<% if @semester.previous_semesters.any? %>
+  <%= link_to 'View CGPA', overall_results_path %>
+<% end %>

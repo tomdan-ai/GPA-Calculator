@@ -1,0 +1,44 @@
+<!-- app/views/semesters/new.html.erb -->
+
+<h1>Add Semester</h1>
+
+<%= form_with(model: @semester, url: semesters_path, method: :post) do |form| %>
+  <%= form.label :name, 'Semester Name or Number' %>
+  <%= form.text_field :name %>
+
+  <!-- Select number of courses -->
+  <%= form.label :number_of_courses, 'Number of Courses' %>
+  <%= form.select :number_of_courses, (1..10) %>
+
+  <!-- Course Input Section -->
+  <h2>Add Course</h2>
+  <%= form.fields_for :courses do |course_form| %>
+    <div>
+      <%= course_form.label :name, 'Course Name' %>
+      <%= course_form.text_field :name %>
+
+      <%= course_form.label :code, 'Course Code' %>
+      <%= course_form.text_field :code %>
+
+      <%= course_form.label :credit_unit, 'Credit Unit' %>
+      <%= course_form.number_field :credit_unit %>
+    </div>
+  <% end %>
+
+  <%= form.submit 'Add Semester' %>
+<% end %>
+
+<!-- Display added courses and their details -->
+<% if @semester.courses.any? %>
+  <h2>Added Courses</h2>
+  <ul>
+    <% @semester.courses.each do |course| %>
+      <li>
+        <strong><%= course.name %></strong> - <%= course.code %> (Credit Units: <%= course.credit_unit %>)
+      </li>
+    <% end %>
+
+    <!-- Link to redirect to Grade Input Page -->
+    <%= link_to 'Add Grades', new_semester_grade_path(@semester) %>
+  </ul>
+<% end %>
